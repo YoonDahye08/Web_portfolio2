@@ -7,7 +7,7 @@ export default async function Home() {
       <div className="text-center">
 
       <div>
-        <Image src={'/image/joongbu.png'} width={150} height={100} className="float-right mr-48"/>
+        <Image src={'/image/joongbu.png'} width={150} height={100} className="float-right mr-48" alt='img'/>
       </div>
       <div className="mr-96 text-3xl">
         <p>안녕하세요.</p>
