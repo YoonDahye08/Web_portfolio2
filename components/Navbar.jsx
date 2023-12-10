@@ -27,6 +27,7 @@ export default function Navbar() {
           ) : (
             <>
               {/* 로그인 안 된 상태 */}
+              <Link href="/addTopic" className="bg-yellow-200 text-lg font-bold px-4 py-2 rounded-md">Sign In</Link>
             </>
           )
         }

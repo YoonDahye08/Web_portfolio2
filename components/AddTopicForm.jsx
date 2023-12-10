@@ -1,56 +1,28 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function AddTopicForm() {
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-
-  const router = useRouter()
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const res = await fetch(`/api/topics`, {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({ title, description }),
-      })
-      if (!res.ok) {
-        throw new Error('Failed to update topic')
-      }
-      router.push('/')
-      router.refresh()
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <input
-        onChange={(e) => setTitle(e.target.value)}
-        value={title}
-        className="border border-slate-500 p-4"
-        type="text"
-        placeholder="작성자"
-      />
-      <textarea
-        onChange={(e) => setDescription(e.target.value)}
-        value={description}
-        className="border border-slate-500 p-4 h-32"
-        type="text"
-        placeholder="내용"
-      />
-      <button
-        type="submit"
-        className="bg-green-800 text-white font-bold px-6 py-3 w-fit rounded-md"
-      >
-        Add Topic
-      </button>
-    </form>
-  )
+  <div>
+        <h1 className="text-3xl mb-10">PORTFOLIO</h1>
+        <div>
+          <Link href="https://webprogramming.vercel.app/" target="_blank"><Image src={'/image/project1.png'} width={520} height={100} className="ml-60" alt='image' /></Link>
+          <Link href="https://github.com/YoonDahye08/webprogramming1" target="_blank">깃허브 바로가기</Link>
+        </div>
+        <div>
+          <Link href="https://clerk2-nine.vercel.app/" target="_blank">
+            <Image src={'/image/project2.png'} width={520} height={100} className="ml-60 mt-10" alt='image'/></Link>
+          <Link href="https://github.com/YoonDahye08/clerk2" target="_blank">깃허브 바로가기</Link>
+        </div>
+        <div>
+          <Link href="https://dapara2-tawny.vercel.app/" target="_blank"><Image src={'/image/dapara.png'} width={520} height={100} className="ml-60 mt-10" alt='image' /></Link>
+          <Link href="https://github.com/YoonDahye08/Dapara2" target="_blank">깃허브 바로가기</Link>
+        </div>
+        <div>
+          <Link href="https://crud2-chi.vercel.app/" target="_blank"><Image src={'/image/crud.png'} width={520} height={100} className="ml-60 mt-10" alt='image' /></Link>
+          <Link href="https://github.com/YoonDahye08/crud2" target="_blank">깃허브 바로가기</Link>
+        </div>
+      </div>
+  
 }

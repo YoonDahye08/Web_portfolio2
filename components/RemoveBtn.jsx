@@ -8,7 +8,7 @@ export default function RemoveBtn({ id }) {
   const router = useRouter()
 
   const removeTopic = async () => {
-    const confirmd = confirm(`Are you sure to delete ${id}`)
+    const confirmd = confirm(`댓글을 삭제하시겠습니까?`)
     if (confirmd) {
       const res = await fetch(`/api/topics?id=${id}`, {
         method: 'DELETE',

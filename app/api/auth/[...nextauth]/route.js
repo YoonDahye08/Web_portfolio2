@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
+import GithubProvider from 'next-auth/providers/github'
 import connectMongoDB from '@/libs/mongodb'
 import User from '@/models/user'
 
@@ -8,6 +9,10 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
   ],
   pages: {
@@ -19,7 +24,7 @@ export const authOptions = {
       const apiUrl = process.env.API_URL
       const { name, email } = user
 
-      if (account.provider === 'google') {
+      if (account.provider === 'google' || account.provider === 'github') {
         try {
           await connectMongoDB()
           const userExists = await User.findOne({ email })
